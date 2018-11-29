@@ -1,0 +1,6 @@
+﻿아이템 ID,아이템 이름,아이템 설명,아이콘,스테이터스
+i_id,s_title,s_description,s_iconName,s_status
+100,Diamond Sword,A sword made of diamond,null,"power=15,defence=7"
+101,Diamond Ore,A Shiny Diamond,null,value=2500
+102,Steel Sword,A sword made of steel,null,"power=8,defence=10"
+103,Emerald Ore,A Shiny Emerald,null,value=1500

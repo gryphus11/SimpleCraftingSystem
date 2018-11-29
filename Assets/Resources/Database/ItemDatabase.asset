@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbcc0bfc607bcf346898a6b00e6c9735, type: 3}
+  m_Name: ItemDatabase
+  m_EditorClassIdentifier: 
+  items:
+  - id: 100
+    title: Diamond Sword
+    description: A sword made of diamond
+    icon: {fileID: 0}
+  - id: 101
+    title: Diamond Ore
+    description: A Shiny Diamond
+    icon: {fileID: 0}
+  - id: 102
+    title: Steel Sword
+    description: A sword made of steel
+    icon: {fileID: 0}
+  - id: 103
+    title: Emerald Ore
+    description: A Shiny Emerald
+    icon: {fileID: 0}
