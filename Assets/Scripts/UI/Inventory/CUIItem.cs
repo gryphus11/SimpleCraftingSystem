@@ -7,10 +7,12 @@ using UnityEngine.EventSystems;
 public class CUIItem : MonoBehaviour, IPointerDownHandler
 {
     public CItem item = null;
+    public bool isCraftingSlot = false;
 
     private Image _icon = null;
 
     private static CUIItem _selectedItem = null;
+    private static CCraftingSlots _craftingSlot = null;
 
     private void Awake()
     {
@@ -24,6 +26,11 @@ public class CUIItem : MonoBehaviour, IPointerDownHandler
         {
             _selectedItem = GameObject.Find("SelectedItem").GetComponent<CUIItem>();
             _selectedItem.UpdateItem(null);
+        }
+
+        if (_craftingSlot == null)
+        {
+            _craftingSlot = FindObjectOfType<CCraftingSlots>();
         }
     }
 
@@ -42,7 +49,11 @@ public class CUIItem : MonoBehaviour, IPointerDownHandler
         {
             _icon.color = Color.clear;
         }
-        
+
+        if (isCraftingSlot)
+        {
+            _craftingSlot.UpdateRecipe();
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)
