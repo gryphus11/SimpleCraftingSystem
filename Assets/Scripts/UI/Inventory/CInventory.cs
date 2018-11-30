@@ -7,6 +7,8 @@ public class CInventory : MonoBehaviour
     // 플레이어가 가진 아이템
     public List<CItem> playerItems = new List<CItem>();
 
+    [SerializeField]
+    private CUIInventory _uiInventory = null;
     private CItemDatabase _itemDatabase = null;
 
     private void Awake()
@@ -15,6 +17,31 @@ public class CInventory : MonoBehaviour
         {
             _itemDatabase = Resources.Load<CItemDatabase>(CUtillity.databaseResourcesPath + "ItemDatabase");
         }
+    }
+
+    private void Start()
+    {
+        GiveItem(100);
+        GiveItem(101);
+        GiveItem(101);
+        GiveItem(101);
+        GiveItem(101);
+        GiveItem(101);
+        GiveItem(102);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
+        GiveItem(103);
     }
 
     public void GiveItem(int id)
@@ -26,6 +53,7 @@ public class CInventory : MonoBehaviour
 
         CItem itemToAdd = _itemDatabase.GetItem(id);
         playerItems.Add(itemToAdd);
+        _uiInventory.AddItemToUI(itemToAdd);
     }
 
     public void GiveItem(string title)
@@ -37,6 +65,7 @@ public class CInventory : MonoBehaviour
 
         CItem itemToAdd = _itemDatabase.GetItem(title);
         playerItems.Add(itemToAdd);
+        _uiInventory.AddItemToUI(itemToAdd);
     }
 
     public CItem CheckForItem(int id)
@@ -54,7 +83,7 @@ public class CInventory : MonoBehaviour
         }
     }
 
-    public bool CheckItemDatabase()
+    private bool CheckItemDatabase()
     {
         if (_itemDatabase == null)
         {

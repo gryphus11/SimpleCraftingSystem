@@ -11,6 +11,9 @@ public class ScriptableObjectTest : MonoBehaviour
     [SerializeField]
     private Text _dataDesc = null;
 
+    [SerializeField]
+    private Image _dataIcon = null;
+
     private int _dbIndex = 0;
     private CItem[] _items = null;
 
@@ -39,6 +42,7 @@ public class ScriptableObjectTest : MonoBehaviour
 
             _dataName.text = _items[_dbIndex].title;
             _dataDesc.text = _items[_dbIndex].description;
+            _dataIcon.sprite = _items[_dbIndex].icon;
         }
     }
 
@@ -54,6 +58,7 @@ public class ScriptableObjectTest : MonoBehaviour
 
             _dataName.text = _items[_dbIndex].title;
             _dataDesc.text = _items[_dbIndex].description;
+            _dataIcon.sprite = _items[_dbIndex].icon;
         }
     }
 

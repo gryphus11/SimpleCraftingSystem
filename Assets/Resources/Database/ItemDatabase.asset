@@ -15,16 +15,16 @@ MonoBehaviour:
   - id: 100
     title: Diamond Sword
     description: A sword made of diamond
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 123865a9e3982ea48a894a579bea30de, type: 3}
   - id: 101
     title: Diamond Ore
     description: A Shiny Diamond
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 0ffcc18a714ca2c40a5eb1e785184e13, type: 3}
   - id: 102
-    title: Steel Sword
-    description: A sword made of steel
-    icon: {fileID: 0}
+    title: Pick Silver
+    description: A pick made of silver
+    icon: {fileID: 21300000, guid: 3faa80979064bbd47a581a24a1316f6c, type: 3}
   - id: 103
     title: Emerald Ore
     description: A Shiny Emerald
-    icon: {fileID: 0}
+    icon: {fileID: 21300000, guid: 269c32777095895499ec6b2ef2a91fdc, type: 3}

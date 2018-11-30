@@ -11,8 +11,8 @@ public class CItemDatabase : ScriptableObject
 
 #if UNITY_EDITOR
 
-    string targetFile = "Assets/Table/ItemTable.csv";
-    string exportFile = "Assets/Resources/Database/ItemDatabase.asset";
+    string targetFile = CUtillity.tableImportPath + "ItemTable.csv";
+    string exportFile = CUtillity.databaseExportPath + "ItemDatabase.asset";
 
     [ContextMenu("데이터베이스 갱신")]
     public void UpdateDatabase()
@@ -44,7 +44,7 @@ public class CItemDatabase : ScriptableObject
                 int.TryParse(dataStrings[index++], out item.id);
                 item.title = dataStrings[index++];
                 item.description = dataStrings[index++];
-                item.icon = UnityEditor.AssetDatabase.LoadAssetAtPath<Sprite>(dataStrings[index++]);
+                item.icon = Resources.Load<Sprite>("Sprites/" + dataStrings[index++]);
                 for (int i = index; i < dataStrings.Length; ++i)
                 {
                     string[] statusData = dataStrings[i].Split(new char[] { '=' }, System.StringSplitOptions.RemoveEmptyEntries);
@@ -54,7 +54,6 @@ public class CItemDatabase : ScriptableObject
                 itemDatabase.items.Add(item);
             }
         }
-
         UnityEditor.AssetDatabase.SaveAssets();
 
         for (int i = 0; i < itemDatabase.items.Count; ++i)

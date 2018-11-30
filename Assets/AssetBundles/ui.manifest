@@ -1,0 +1,26 @@
+ManifestFileVersion: 0
+CRC: 2519267960
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 77e4fec2226913c6d8efc7b9379bbef4
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: ea5a42e0fd8ea905efa7aa926a3b8944
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Sprites/buttonLong_blue_pressed.png
+- Assets/Sprites/pick_diamond.png
+- Assets/Sprites/panel_blue.png
+- Assets/Sprites/ore_emerald.png
+- Assets/Sprites/pick_silver.png
+- Assets/Sprites/sword_diamond.png
+- Assets/Sprites/ore_diamond.png
+- Assets/Sprites/buttonLong_blue.png
+- Assets/Sprites/ore_gold.png
+Dependencies: []
