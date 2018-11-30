@@ -11,15 +11,17 @@ public class ScriptableObjectTest : MonoBehaviour
     [SerializeField]
     private Text _dataDesc = null;
 
-    private CItemDatabase _itemDb = null;
     private int _dbIndex = 0;
+    private CItem[] _items = null;
 
     // Use this for initialization
     void Start()
     {
-        _itemDb = Resources.Load<CItemDatabase>("Database/ItemDatabase");
+        CItemDatabase itemDb = Resources.Load<CItemDatabase>("Database/ItemDatabase");
 
-        foreach (CItem item in _itemDb.items)
+        _items = itemDb.GetItemArray();
+
+        foreach (CItem item in _items)
         {
             Debug.Log(item.title);
         }
@@ -27,31 +29,31 @@ public class ScriptableObjectTest : MonoBehaviour
 
     public void OnNextClick()
     {
-        if (_itemDb != null)
+        if (_items != null)
         {
             ++_dbIndex;
-            if (_dbIndex >= _itemDb.items.Count)
+            if (_dbIndex >= _items.Length)
             {
                 _dbIndex = 0;
             }
 
-            _dataName.text = _itemDb.items[_dbIndex].title;
-            _dataDesc.text = _itemDb.items[_dbIndex].description;
+            _dataName.text = _items[_dbIndex].title;
+            _dataDesc.text = _items[_dbIndex].description;
         }
     }
 
     public void OnPrevClick()
     {
-        if (_itemDb != null)
+        if (_items != null)
         {
             --_dbIndex;
             if (_dbIndex < 0)
             {
-                _dbIndex = _itemDb.items.Count - 1;
+                _dbIndex = _items.Length - 1;
             }
 
-            _dataName.text = _itemDb.items[_dbIndex].title;
-            _dataDesc.text = _itemDb.items[_dbIndex].description;
+            _dataName.text = _items[_dbIndex].title;
+            _dataDesc.text = _items[_dbIndex].description;
         }
     }
 

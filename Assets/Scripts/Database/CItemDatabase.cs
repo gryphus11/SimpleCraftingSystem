@@ -6,7 +6,8 @@ using System.IO;
 [CreateAssetMenu(fileName = "ItemDatabase.asset", menuName = "Create Asset Database")]
 public class CItemDatabase : ScriptableObject
 {
-    public List<CItem> items = new List<CItem>();
+    [SerializeField]
+    private List<CItem> items = new List<CItem>();
 
 #if UNITY_EDITOR
 
@@ -80,5 +81,10 @@ public class CItemDatabase : ScriptableObject
     public CItem GetItem(string title)
     {
         return items.Find(item => item.title.Equals(title));
+    }
+
+    public CItem[] GetItemArray()
+    {
+        return items.ToArray();
     }
 }

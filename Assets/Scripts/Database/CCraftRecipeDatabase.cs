@@ -7,10 +7,11 @@ using System.Linq;
 [CreateAssetMenu(fileName = "RecipeDatabase.asset", menuName = "Create Recipe Database")]
 public class CCraftRecipeDatabase : ScriptableObject
 {
-    public List<CCraftRecipe> recipes = new List<CCraftRecipe>();
+    [SerializeField]
+    private List<CCraftRecipe> recipes = new List<CCraftRecipe>();
 
     [SerializeField]
-    private CItemDatabase itemDb = null;
+    private CItemDatabase _itemDb = null;
 
 #if UNITY_EDITOR
     string targetFile = "Assets/Table/RecipeTable.csv";
@@ -67,7 +68,7 @@ public class CCraftRecipeDatabase : ScriptableObject
     /// <returns></returns>
     public CItem CheckRecipe(int[] recipe)
     {
-        if (itemDb == null)
+        if (_itemDb == null)
         {
             return null;
         }
@@ -76,7 +77,7 @@ public class CCraftRecipeDatabase : ScriptableObject
         {
             if (craftRecipe.requiredItems.SequenceEqual(recipe))
             {
-                return itemDb.GetItem(craftRecipe.itemToCraft);
+                return _itemDb.GetItem(craftRecipe.itemToCraft);
             }
         }
 
