@@ -925,6 +925,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _slotPanel: {fileID: 804286985}
+  _inventory: {fileID: 451714469}
 --- !u!114 &1826904385 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 114591380309462074, guid: 6f3b5e9aacc0078448bd863256fa8a00,
