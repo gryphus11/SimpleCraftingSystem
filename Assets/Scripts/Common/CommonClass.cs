@@ -45,6 +45,7 @@ public class CItem
 /// <summary>
 /// 조합 레시피 클래스
 /// </summary>
+[System.Serializable]
 public class CCraftRecipe
 {
     // 조합에 필요한 아이템의 ID
@@ -57,6 +58,12 @@ public class CCraftRecipe
     {
         this.itemToCraft = itemToCraft;
         this.requiredItems = requiredItems;
+    }
+
+    public CCraftRecipe()
+    {
+        itemToCraft = 0;
+        requiredItems = new int[9];
     }
 }
 

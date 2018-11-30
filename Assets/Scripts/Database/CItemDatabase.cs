@@ -9,12 +9,13 @@ public class CItemDatabase : ScriptableObject
     public List<CItem> items = new List<CItem>();
 
 #if UNITY_EDITOR
+
+    string targetFile = "Assets/Table/ItemTable.csv";
+    string exportFile = "Assets/Resources/Database/ItemDatabase.asset";
+
     [ContextMenu("데이터베이스 갱신")]
     public void UpdateDatabase()
     {
-        string targetFile = "Assets/Table/ItemTable.csv";
-        string exportFile = "Assets/Resources/Database/ItemDatabase.asset";
-
         CItemDatabase itemDatabase = UnityEditor.AssetDatabase.LoadAssetAtPath<CItemDatabase>(exportFile);
 
         if (itemDatabase == null)
@@ -54,7 +55,30 @@ public class CItemDatabase : ScriptableObject
         }
 
         UnityEditor.AssetDatabase.SaveAssets();
+
+        for (int i = 0; i < itemDatabase.items.Count; ++i)
+        {
+            Dictionary<string, int> stats = itemDatabase.items[i].status;
+
+            System.Text.StringBuilder builder = new System.Text.StringBuilder();
+            foreach (string key in stats.Keys)
+            {
+                builder.Append(key + " " + stats[key] + "\n");
+            }
+
+            Debug.Log(builder.ToString());
+        }
         Debug.Log("Updated");
     }
 #endif
+
+    public CItem GetItem(int id)
+    {
+        return items.Find(item => item.id == id);
+    }
+
+    public CItem GetItem(string title)
+    {
+        return items.Find(item => item.title.Equals(title));
+    }
 }

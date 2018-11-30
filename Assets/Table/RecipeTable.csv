@@ -1,0 +1,5 @@
+﻿아이템 ID,레시피,,,,,,,,
+i_id,i_0(TopLeft),i_1(Top),i_2(TopRight),i_3(Left),i_4(Center),i_5(Right),i_6(BottomLeft),i_7(Bottom),i_8(BottomRight)
+100,0,0,0,0,101,0,0,0,0
+101,103,103,103,103,103,103,103,103,103
+102,103,0,103,0,103,0,0,103,0
