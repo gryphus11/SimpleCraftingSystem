@@ -11,15 +11,16 @@ public class CItem
     public int id = 0;
     public string title = string.Empty;
     public string description = string.Empty;
-    public Sprite icon = null;
-    public Dictionary<string, int> status = new Dictionary<string, int>();
+    public string iconPath = string.Empty;
+    [SerializeField]
+    public List<CItemStatus> status = new List<CItemStatus>();
 
-    public CItem(int id, string title, string description, Sprite icon, Dictionary<string, int> status)
+    public CItem(int id, string title, string description, string iconPath, List<CItemStatus> status)
     {
         this.id = id;
         this.title = title;
         this.description = description;
-        this.icon = icon;
+        this.iconPath = iconPath;
         this.status = status;
     }
 
@@ -28,7 +29,7 @@ public class CItem
         id = item.id;
         title = item.title;
         description = item.description;
-        icon = item.icon;
+        iconPath = item.iconPath;
         status = item.status;
     }
 
@@ -37,9 +38,16 @@ public class CItem
         id = 0;
         title = string.Empty;
         description = string.Empty;
-        icon = null;
-        status = new Dictionary<string, int>();
+        iconPath = string.Empty;
+        status = new List<CItemStatus>();
     }
+}
+
+[System.Serializable]
+public class CItemStatus
+{
+    public string statusName = string.Empty;
+    public int statusValue = 0;
 }
 
 /// <summary>

@@ -13,9 +13,10 @@ public class CInventory : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log(Application.persistentDataPath + "/Brunhild/Bundles/");
         if (_itemDatabase == null)
         {
-            _itemDatabase = Resources.Load<CItemDatabase>(CUtillity.databaseResourcesPath + "ItemDatabase");
+            _itemDatabase = CAssetBundleManager.GetItemDatabase();
         }
     }
 
@@ -85,11 +86,6 @@ public class CInventory : MonoBehaviour
 
     private bool CheckItemDatabase()
     {
-        if (_itemDatabase == null)
-        {
-            _itemDatabase = Resources.Load<CItemDatabase>(CUtillity.databaseResourcesPath + "ItemDatabase");
-        }
-
         if (_itemDatabase == null)
         {
             return false;

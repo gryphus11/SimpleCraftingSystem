@@ -4,12 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class CUIItem : MonoBehaviour, IPointerDownHandler
+public class CUIItem : MonoBehaviour, IPointerDownHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public CItem item = null;
     public bool isCraftingSlot = false;
 
     private Image _icon = null;
+    private CTooltip _tooltip = null;
 
     private static CUIItem _selectedItem = null;
     private static CCraftingSlots _craftingSlot = null;
@@ -32,6 +33,8 @@ public class CUIItem : MonoBehaviour, IPointerDownHandler
         {
             _craftingSlot = FindObjectOfType<CCraftingSlots>();
         }
+
+        _tooltip = FindObjectOfType<CTooltip>();
     }
 
     public void UpdateItem(CItem item)
@@ -41,7 +44,7 @@ public class CUIItem : MonoBehaviour, IPointerDownHandler
         if (item != null)
         {
             _icon.color = Color.white;
-            _icon.sprite = item.icon;
+            _icon.sprite = CAssetBundleManager.GetUISprite(item.iconPath);
             if (_icon.sprite == null)
                 _icon.color = Color.clear;
         }
@@ -77,5 +80,18 @@ public class CUIItem : MonoBehaviour, IPointerDownHandler
             UpdateItem(_selectedItem.item);
             _selectedItem.UpdateItem(null);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (item != null && item.id != 0)
+        {
+            _tooltip.GenerateToolTip(item);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        _tooltip.gameObject.SetActive(false);
     }
 }

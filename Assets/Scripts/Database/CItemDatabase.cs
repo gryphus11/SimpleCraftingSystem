@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-[CreateAssetMenu(fileName = "ItemDatabase.asset", menuName = "Create Asset Database")]
 public class CItemDatabase : ScriptableObject
 {
     [SerializeField]
@@ -11,12 +10,17 @@ public class CItemDatabase : ScriptableObject
 
 #if UNITY_EDITOR
 
-    string targetFile = CUtillity.tableImportPath + "ItemTable.csv";
-    string exportFile = CUtillity.databaseExportPath + "ItemDatabase.asset";
+    static string targetFile = CUtillity.tableImportPath + "ItemTable.csv";
+    static string exportFile = CUtillity.databaseExportPath + "ItemDatabase.asset";
 
-    [ContextMenu("데이터베이스 갱신")]
-    public void UpdateDatabase()
+    [UnityEditor.MenuItem("Database/Create ItemDatabase")]
+    public static void UpdateDatabase()
     {
+        if (!Directory.Exists(CUtillity.databaseExportPath))
+        {
+            Directory.CreateDirectory(CUtillity.databaseExportPath);
+        }
+
         CItemDatabase itemDatabase = UnityEditor.AssetDatabase.LoadAssetAtPath<CItemDatabase>(exportFile);
 
         if (itemDatabase == null)
@@ -44,26 +48,31 @@ public class CItemDatabase : ScriptableObject
                 int.TryParse(dataStrings[index++], out item.id);
                 item.title = dataStrings[index++];
                 item.description = dataStrings[index++];
-                item.icon = Resources.Load<Sprite>("Sprites/" + dataStrings[index++]);
+                Debug.Log(dataStrings[index]);
+                item.iconPath = dataStrings[index++];
                 for (int i = index; i < dataStrings.Length; ++i)
                 {
                     string[] statusData = dataStrings[i].Split(new char[] { '=' }, System.StringSplitOptions.RemoveEmptyEntries);
-                    item.status.Add(statusData[0], int.Parse(statusData[1]));
+                    CItemStatus stat = new CItemStatus();
+                    stat.statusName = statusData[0];
+                    int.TryParse(statusData[1], out stat.statusValue);
+                    item.status.Add(stat);
                 }
 
                 itemDatabase.items.Add(item);
             }
         }
+
         UnityEditor.AssetDatabase.SaveAssets();
 
         for (int i = 0; i < itemDatabase.items.Count; ++i)
         {
-            Dictionary<string, int> stats = itemDatabase.items[i].status;
+            List<CItemStatus> stats = itemDatabase.items[i].status;
 
             System.Text.StringBuilder builder = new System.Text.StringBuilder();
-            foreach (string key in stats.Keys)
+            foreach (CItemStatus stat in stats)
             {
-                builder.Append(key + " " + stats[key] + "\n");
+                builder.Append(stat.statusName + " " + stat.statusValue + "\n");
             }
 
             Debug.Log(builder.ToString());

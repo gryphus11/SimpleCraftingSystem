@@ -11,6 +11,13 @@ public class CUICraftResult : MonoBehaviour, IPointerDownHandler
     [SerializeField]
     private CInventory _inventory = null;
 
+    private CUIItem _uiItem = null;
+
+    private void Awake()
+    {
+        _uiItem = GetComponent<CUIItem>();
+    }
+
     /// <summary>
     /// 조합완료 칸을 누른 경우
     /// </summary>

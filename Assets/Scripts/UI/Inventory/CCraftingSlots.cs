@@ -20,7 +20,7 @@ public class CCraftingSlots : MonoBehaviour
 
         if (_recipeDatabase == null)
         {
-            _recipeDatabase = Resources.Load<CCraftRecipeDatabase>(CUtillity.databaseResourcesPath + "RecipeDatabase");
+            _recipeDatabase = CAssetBundleManager.GetRecipeDatabase();
         }
     }
 

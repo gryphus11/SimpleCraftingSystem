@@ -9,7 +9,8 @@ public class CCreateAssetBundles
     [MenuItem("Bundles/Build Asset Bundles")]
     static void BuildAllAssetBundles()
     {
-        string assetBundleDirectory = "Assets/AssetBundles";
+        string assetBundleDirectory = CUtillity.assetBundlePath;
+
         if (!Directory.Exists(assetBundleDirectory))
         {
             Directory.CreateDirectory(assetBundleDirectory);

@@ -1,0 +1,21 @@
+ManifestFileVersion: 0
+CRC: 802818016
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: c40f887a00e5ca844c592221307a8eb2
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 5cc829f8c445bb3a4d6e6140436466f2
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 9297c7640cd53f54a939216b2e798e4e, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: fbcc0bfc607bcf346898a6b00e6c9735, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+Assets:
+- Assets/Database/ItemDatabase.asset
+- Assets/Database/RecipeDatabase.asset
+Dependencies: []

@@ -1,7 +1,10 @@
 ManifestFileVersion: 0
-CRC: 1813572324
+CRC: 3503420915
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: ui
+      Dependencies: {}
+    Info_1:
+      Name: database
       Dependencies: {}

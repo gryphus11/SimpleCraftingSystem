@@ -34,7 +34,7 @@ public class CSlotPanel : MonoBehaviour {
         {
             return;
         }
-
+        
         uiItems[slot].UpdateItem(item);
     }
 

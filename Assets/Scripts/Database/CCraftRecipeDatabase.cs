@@ -4,7 +4,6 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 
-[CreateAssetMenu(fileName = "RecipeDatabase.asset", menuName = "Create Recipe Database")]
 public class CCraftRecipeDatabase : ScriptableObject
 {
     [SerializeField]
@@ -14,12 +13,17 @@ public class CCraftRecipeDatabase : ScriptableObject
     private CItemDatabase _itemDb = null;
 
 #if UNITY_EDITOR
-    string targetFile = "Assets/Table/RecipeTable.csv";
-    string exportFile = "Assets/Resources/Database/RecipeDatabase.asset";
+    static string targetFile = CUtillity.tableImportPath + "RecipeTable.csv";
+    static string exportFile = CUtillity.databaseExportPath + "RecipeDatabase.asset";
 
-    [ContextMenu("데이터베이스 갱신")]
-    public void UpdateDatabase()
+    [UnityEditor.MenuItem("Database/Create RecipeDatabase")]
+    public static void UpdateDatabase()
     {
+        if (!Directory.Exists(CUtillity.databaseExportPath))
+        {
+            Directory.CreateDirectory(CUtillity.databaseExportPath);
+        }
+
         CCraftRecipeDatabase recipeDatabase = UnityEditor.AssetDatabase.LoadAssetAtPath<CCraftRecipeDatabase>(exportFile);
 
         if (recipeDatabase == null)

@@ -18,4 +18,4 @@ MonoBehaviour:
     itemToCraft: 101
   - requiredItems: 670000000000000067000000000000006700000000000000000000006700000000000000
     itemToCraft: 102
-  _itemDb: {fileID: 11400000, guid: 13d49a5a92b4cbb41beb11f2a5328ef0, type: 2}
+  _itemDb: {fileID: 11400000, guid: 3c4b2317adebd864faa799779f087eef, type: 2}
